@@ -1,11 +1,10 @@
 
 //array de paises
 var palabras = ["CHILE", "BRASIL", "COLOMBIA", "PERU", "BOLIVIA", "ECUADOR"];
-
+var arrayLetrasPresionadas=[];
 
 var buttonIniciarJuego = document.querySelector("#iniciar-juego");
 buttonIniciarJuego.onclick = jugar;
-
 
 var error = 0;
 var i = 1;
@@ -13,6 +12,8 @@ var i = 1;
 function jugar() {
 
     cavasInicio();
+    window.scrollTo(800, 500);
+    //document.getElementById("ahorcado").focus();
 
     var palabraEscogida = palabras[Math.floor(Math.random() * palabras.length)];
     console.log(palabraEscogida);
@@ -52,6 +53,7 @@ function jugar() {
                 pincel.font = "bold 50px arial";
                 pincel.fillText(palabraEscogidaSplit[j], arrayEjeXaleatorio[j], 570); 
                 posicion++;
+                arrayLetrasPresionadas.push(palabraEscogidaSplit[i]);
             }
        
         }
@@ -62,13 +64,16 @@ function jugar() {
             error = 0;
             posicion=-1;
             location.reload(true)
+            window.scrollTo(0,100);
           
         } else if (i == palabraEscogidaSplit.length) {
+            window.scrollTo(0,100);
             alert("G A N A S T E");
             i = 0;
             error = 0;
             posicion=-1;
             location.reload(true)
+            
         }
     
         if (posicion == -1) {
@@ -101,8 +106,6 @@ function jugar() {
                     break;
                 case 9:
                     piernaIzquierda();
-                    break;
-                default:
                     break;
             }
         } else {
